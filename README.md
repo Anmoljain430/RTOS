@@ -15,6 +15,7 @@ Functionality:
 3.If its not an alphabetic character it will send the character as it is.
 
 Execution steps:
+
 1.Run each client and server in different terminals.
 2.Enter a single character at the client.
 3.The Server will send back the character based on above functionality.
