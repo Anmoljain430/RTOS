@@ -50,7 +50,7 @@ int main()
 		strcpy(filename,"./Client");
 		strcat(filename,temp1);
 		strcat(filename,message_rcv.msg_text);
-		fptr = fopen(filename,"r");
+		fptr = fopen(message_rcv.msg_text,"r");
                 if (fptr == NULL)
                 {
 	          strcpy(message_send.msg_text,"File Not Found");
