@@ -43,13 +43,13 @@ int main()
 		FILE *fptr;
                 char c;
                 //fptr = fopen(message_rcv.msg_text, "r");
-		char temp1[3];
-                temp1[0] = i+'0';
-                temp1[1] = '/';
-		temp1[2]= '\0';
-		strcpy(filename,"./Client");
-		strcat(filename,temp1);
-		strcat(filename,message_rcv.msg_text);
+		//char temp1[3];
+                //temp1[0] = i+'0';
+                //temp1[1] = '/';
+		//temp1[2]= '\0';
+		//strcpy(filename,"./Client");
+		//strcat(filename,temp1);
+		//strcat(filename,message_rcv.msg_text);
 		fptr = fopen(message_rcv.msg_text,"r");
                 if (fptr == NULL)
                 {

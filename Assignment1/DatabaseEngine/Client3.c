@@ -26,7 +26,8 @@ int main()
 	while(1)
         {		
           printf("Enter filename for client3 or ctrl+c to exit :\n");
-          gets(message_send.msg_text);
+          //gets(message_send.msg_text);
+	  scanf("%[^\n]%*c",message_send.msg_text);
           // msgsnd to send message_send
           msgsnd(msgid_send, &message_send, sizeof(message_send), 3);
 
