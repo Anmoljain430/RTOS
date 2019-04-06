@@ -49,7 +49,8 @@ int main(int argc, char**argv) {
   //while (fgets(buffer, BUF_SIZE, stdin) != NULL) {
  while(1) {
   printf("Enter Filename :\n");
-  gets(buffer);	 
+  //gets(buffer);
+  scanf("%[^\n]%*c",buffer);
   //strcpy(buffer,"hiiiii i am from client2");
   printf("character sent from client is: %s\n",buffer);
   ret = sendto(sockfd, buffer, BUF_SIZE, 0, (struct sockaddr *) &addr, sizeof(addr));  
