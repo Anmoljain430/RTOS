@@ -31,8 +31,8 @@ int main(int argc, char*argv[]){
         .format = PA_SAMPLE_S16LE,
         .rate = 41000,
         .channels = 2
-    };
-    pa_simple *s = NULL;
+    };   // specifications of the recorded audio like sample rate
+    pa_simple *s = NULL; // creating a simple connection object
     int ret = 1;
     int error;
 
@@ -42,7 +42,7 @@ int main(int argc, char*argv[]){
 	server.sin_addr.s_addr=inet_addr(argv[1]);
 	server.sin_port=htons(4000);
 	memset(server.sin_zero, '\0', sizeof server.sin_zero);
-
+        // pa_simple_new will create a connection to server and  by taking input arguments as record
 	if (!(s = pa_simple_new(NULL, argv[0], PA_STREAM_RECORD, NULL, "record", &ss, NULL, NULL, &error))) {
         fprintf(stderr, __FILE__": pa_simple_new() failed: %s\n", pa_strerror(error));
         goto finish;
@@ -52,7 +52,7 @@ int main(int argc, char*argv[]){
 
     while(1){
     	
-		if (pa_simple_read(s, buf, sizeof(buf), &error) < 0) {
+		if (pa_simple_read(s, buf, sizeof(buf), &error) < 0) { // will simply read the  audio stream from the server i.e microphone
             fprintf(stderr, __FILE__": pa_simple_read() failed: %s\n", pa_strerror(error));
             goto finish;
         }
@@ -60,7 +60,7 @@ int main(int argc, char*argv[]){
         message = (unsigned char*)buf;
 		write(client_fd,message,BUFSIZE);
 		*/
-		write(client_fd,buf,sizeof(buf));
+		write(client_fd,buf,sizeof(buf)); // will write the recorded audio stream to a buffer
 
 	}
 	ret = 0;
@@ -68,7 +68,7 @@ int main(int argc, char*argv[]){
 finish:
 
     if (s)
-        pa_simple_free(s);
+        pa_simple_free(s); //Close and free the connection to the server.
 
     return ret;
 }
